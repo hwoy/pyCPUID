@@ -1,7 +1,7 @@
 #include "CPUID.h"
 
 #ifndef __x86_64__
-int testcpuid (void)
+SPECIFIER int testcpuid (void)
 {
   int ret;
   __asm__ volatile( "pushfl\n\t"
@@ -20,17 +20,19 @@ int testcpuid (void)
 }
 #endif
 
-struct REG CPUID(const struct REG* reg)
+SPECIFIER struct REG CPUID(const struct REG* reg)
 {
 	struct REG oreg;
-	    __asm__ volatile("cpuid": "=a" (oreg.eax.reg32), "=b" (oreg.ebx.reg32), "=c" (oreg.ecx.reg32), "=d" (oreg.edx.reg32): "a" (reg->eax.reg32), "b" (reg->ebx.reg32), "c" (reg->ecx.reg32), "d" (reg->edx.reg32)); 
+	__asm__ volatile("cpuid":
+	"=a" (oreg.eax.reg32), "=b" (oreg.ebx.reg32), "=c" (oreg.ecx.reg32), "=d" (oreg.edx.reg32):
+	"a" (reg->eax.reg32), "b" (reg->ebx.reg32), "c" (reg->ecx.reg32), "d" (reg->edx.reg32)); 
 			
 	return oreg;
 
 }
 
 
-const char *getCPUManID(CPUMANIDSTR cpustr)
+SPECIFIER const char *getCPUManID(CPUMANIDSTR cpustr)
 {
 	struct REG reg;
 	
@@ -46,7 +48,7 @@ const char *getCPUManID(CPUMANIDSTR cpustr)
 }
 
 
-const char *getCPUBrand(CPUBRANDSTR cpustr)
+SPECIFIER const char *getCPUBrand(CPUBRANDSTR cpustr)
 {
 	struct REG reg;
 	reg.eax.reg32=0x80000000;
@@ -76,7 +78,7 @@ const char *getCPUBrand(CPUBRANDSTR cpustr)
 	return cpustr;
 }
 
-union CPUVERINFO getCPUVerInfo()
+SPECIFIER union CPUVERINFO getCPUVerInfo()
 {
 	struct REG reg;
 	reg.eax.reg32=1;

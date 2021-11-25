@@ -3,10 +3,6 @@
 
 #include <stdint.h>
 
-#ifndef __x86_64__
-int testcpuid (void);
-#endif
-
 union REG16
 {
 	struct
@@ -55,13 +51,24 @@ union CPUVERINFO
 	uint32_t value;
 };
 
-struct REG CPUID(const struct REG* reg);
 
-const char *getCPUManID(CPUMANIDSTR cpustr);
+#ifdef __XCPUID_PYTHON_MODULE__
+	#define SPECIFIER static
+#else
+	#define SPECIFIER
+#endif
 
-const char *getCPUBrand(CPUBRANDSTR cpustr);
+#ifndef __x86_64__
+SPECIFIER int testcpuid (void);
+#endif
 
-union CPUVERINFO getCPUVerInfo();
+SPECIFIER struct REG CPUID(const struct REG* reg);
+
+SPECIFIER const char *getCPUManID(CPUMANIDSTR cpustr);
+
+SPECIFIER const char *getCPUBrand(CPUBRANDSTR cpustr);
+
+SPECIFIER union CPUVERINFO getCPUVerInfo();
 
 
 

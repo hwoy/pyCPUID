@@ -12,5 +12,6 @@ clean:
 $(BIN): main.o CPUID.o
 	$(CC) -o $(BIN) main.o CPUID.o
 
+
 CPUID.o: CPUID.c CPUID.h
-main.o: main.c CPUID.h flagsdata.h
+main.o: main.c main.h CPUID.h flagsdata.h
