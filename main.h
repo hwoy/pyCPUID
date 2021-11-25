@@ -50,55 +50,55 @@ static void printCPUflags()
 	{
 		printf("============== EAX=1,EDX bit features ==============\n");
 		struct REG reg;
-		reg.eax.reg32=1;
+		reg.eax.value=1;
 		const struct REG oreg=CPUID(&reg);
-		printflagsdata(oreg.edx.reg32,eax1_edx);
+		printflagsdata(oreg.edx.value,eax1_edx);
 		
 		putchar('\n');
 		printf("============== EAX=1,ECX bit features ==============\n");
-		printflagsdata(oreg.ecx.reg32,eax1_ecx);
+		printflagsdata(oreg.ecx.value,eax1_ecx);
 	}
 	
 	{
 		putchar('\n');
 		printf("============== EAX=7,ECX=0,EBX bit features ==============\n");
 		struct REG reg;
-		reg.eax.reg32=7;reg.ecx.reg32=0;
+		reg.eax.value=7;reg.ecx.value=0;
 		const struct REG oreg=CPUID(&reg);
-		printflagsdata(oreg.ebx.reg32,eax7_ecx0_ebx);
+		printflagsdata(oreg.ebx.value,eax7_ecx0_ebx);
 		putchar('\n');
 		printf("============== EAX=7,ECX=0,ECX bit features ==============\n");
-		printflagsdata(oreg.ecx.reg32,eax7_ecx0_ecx);
+		printflagsdata(oreg.ecx.value,eax7_ecx0_ecx);
 		putchar('\n');
 		printf("============== EAX=7,ECX=0,EDX bit features ==============\n");
-		printflagsdata(oreg.edx.reg32,eax7_ecx0_edx);
+		printflagsdata(oreg.edx.value,eax7_ecx0_edx);
 		
-		if(oreg.eax.reg32>0)
+		if(oreg.eax.value>0)
 		{
-			reg.eax.reg32=7;reg.ecx.reg32=1;
+			reg.eax.value=7;reg.ecx.value=1;
 			const struct REG oreg=CPUID(&reg);
 			putchar('\n');
 			printf("============== EAX=7,ECX=1,EAX bit features ==============\n");
-			printflagsdata(oreg.eax.reg32,eax7_ecx1_eax);
+			printflagsdata(oreg.eax.value,eax7_ecx1_eax);
 		}
 		
 	}
 	
 	{
 		struct REG reg;
-		reg.eax.reg32=0x80000000;
+		reg.eax.value=0x80000000;
 		const struct REG oreg=CPUID(&reg);
-		if(oreg.eax.reg32>0x80000000)
+		if(oreg.eax.value>0x80000000)
 		{
 			struct REG reg;
-			reg.eax.reg32=0x80000001;
+			reg.eax.value=0x80000001;
 			const struct REG oreg=CPUID(&reg);
 			putchar('\n');
 			printf("============== EAX=0x80000001,EDX bit features ==============\n");
-			printflagsdata(oreg.edx.reg32,eax80000001h_edx);
+			printflagsdata(oreg.edx.value,eax80000001h_edx);
 			putchar('\n');
 			printf("============== EAX=0x80000001,ECX bit features ==============\n");
-			printflagsdata(oreg.ecx.reg32,eax80000001h_ecx);
+			printflagsdata(oreg.ecx.value,eax80000001h_ecx);
 		}
 	}
 }

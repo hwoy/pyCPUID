@@ -10,13 +10,13 @@ union REG16
 		uint16_t L:8;
 		uint16_t H:8;
 	}reg16;
-	uint16_t E;
+	uint16_t value;
 };
 
 union REG32
 {
 	union REG16 reg16;
-	uint32_t reg32;
+	uint32_t value;
 
 };
 
