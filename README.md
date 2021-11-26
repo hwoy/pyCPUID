@@ -10,7 +10,7 @@ $ make
 ## How to build (Python(version 3.9.9 on Windows) module)
 ```sh
 $ python setup.py build --compiler mingw32
-$ python setup.py
+$ python setup.py install
 ```
 
 ## Example
