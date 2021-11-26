@@ -1,6 +1,6 @@
 CC=gcc
 CFLAGS=-O2 -std=c99 -pedantic -Wall -Wno-uninitialized
-BIN=xcpuid.exe
+BIN=cpuid.exe
 
 .PHONY: all clean
 

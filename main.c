@@ -9,6 +9,7 @@ int main()
 		return 0;
 	}
 	#endif
+
 	printCPUManID();
 	printCPUBrand();
 	putchar('\n');
@@ -18,6 +19,7 @@ int main()
 	putchar('\n');
 	
 	printCPUflags();
+
 	
 	return 0;
 }
