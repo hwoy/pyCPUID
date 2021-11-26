@@ -11,6 +11,7 @@ $ make
 ```sh
 $ python setup.py build --compiler mingw32
 $ python setup.py install
+$ python CPUID.py
 ```
 
 ## Example
