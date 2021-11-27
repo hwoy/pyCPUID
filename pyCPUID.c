@@ -32,19 +32,19 @@ static PyObject *pyCPUID(PyObject *self, PyObject *args)
 
 static PyMethodDef pyCPUID_funcs[] = {
    {"pygetCPUManID", (PyCFunction)pygetCPUManID, 
-	METH_NOARGS, "pygetCPUManID( ): get a CPU Manufacturer ID string\n"},
+	METH_NOARGS, "pygetCPUManID( ): get a CPU manufacturer ID string\n"},
 	
    {"pygetCPUBrand", (PyCFunction)pygetCPUBrand, 
-	METH_NOARGS, "pygetCPUBrand( ): get a CPU Brand string\n"},
+	METH_NOARGS, "pygetCPUBrand( ): get a CPU brand string\n"},
 	
    {"pyCPUID", (PyCFunction)pyCPUID, 
-	METH_VARARGS, "pyCPUID(eax,ebx,ecx,edx): get a CPU raw value\n"},
+	METH_VARARGS, "pyCPUID(eax,ebx,ecx,edx): get a CPUID raw value\n"},
 	
       {NULL}
 };
 
 static const char pyCPUID_docs[] =
-   "pyCPUID is CPUID module\n";
+   "pyCPUID is a CPUID module\n";
 
 static struct PyModuleDef pyCPUID_module = {
    PyModuleDef_HEAD_INIT,
