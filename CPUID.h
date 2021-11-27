@@ -68,7 +68,9 @@ SPECIFIER const char *getCPUManID(CPUMANIDSTR cpustr);
 
 SPECIFIER const char *getCPUBrand(CPUBRANDSTR cpustr);
 
+#ifndef __XCPUID_PYTHON_MODULE__
 SPECIFIER union CPUVERINFO getCPUVerInfo();
+#endif
 
 
 

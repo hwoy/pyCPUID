@@ -49,7 +49,7 @@ static void printCPUflags()
 {
 	{
 		printf("============== EAX=1,EDX bit features ==============\n");
-		struct REG reg;
+		struct REG reg={{.value=0},{.value=0},{.value=0},{.value=0}};
 		reg.eax.value=1;
 		const struct REG oreg=CPUID(&reg);
 		printflagsdata(oreg.edx.value,eax1_edx);
@@ -62,7 +62,7 @@ static void printCPUflags()
 	{
 		putchar('\n');
 		printf("============== EAX=7,ECX=0,EBX bit features ==============\n");
-		struct REG reg;
+		struct REG reg={{.value=0},{.value=0},{.value=0},{.value=0}};
 		reg.eax.value=7;reg.ecx.value=0;
 		const struct REG oreg=CPUID(&reg);
 		printflagsdata(oreg.ebx.value,eax7_ecx0_ebx);
@@ -85,7 +85,7 @@ static void printCPUflags()
 	}
 	
 	{
-		struct REG reg;
+		struct REG reg={{.value=0},{.value=0},{.value=0},{.value=0}};
 		reg.eax.value=0x80000000;
 		const struct REG oreg=CPUID(&reg);
 		if(oreg.eax.value>0x80000000)

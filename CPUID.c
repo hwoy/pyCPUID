@@ -34,7 +34,7 @@ SPECIFIER struct REG CPUID(const struct REG* reg)
 
 SPECIFIER const char *getCPUManID(CPUMANIDSTR cpustr)
 {
-	struct REG reg;
+	struct REG reg={{.value=0},{.value=0},{.value=0},{.value=0}};
 	
 	reg.eax.value=0;
 	const struct REG oreg=CPUID(&reg);
@@ -50,7 +50,7 @@ SPECIFIER const char *getCPUManID(CPUMANIDSTR cpustr)
 
 SPECIFIER const char *getCPUBrand(CPUBRANDSTR cpustr)
 {
-	struct REG reg;
+	struct REG reg={{.value=0},{.value=0},{.value=0},{.value=0}};
 	reg.eax.value=0x80000000;
 	struct REG oreg=CPUID(&reg);
 	
@@ -62,7 +62,7 @@ SPECIFIER const char *getCPUBrand(CPUBRANDSTR cpustr)
 	
 	for(uint32_t j=0x80000002,i=0;j<=0x80000004;++j)
 	{
-		struct REG reg;
+		struct REG reg={{.value=0},{.value=0},{.value=0},{.value=0}};
 		reg.eax.value=j;
 		const struct REG oreg=CPUID(&reg);
 		
@@ -78,9 +78,10 @@ SPECIFIER const char *getCPUBrand(CPUBRANDSTR cpustr)
 	return cpustr;
 }
 
+#ifndef __XCPUID_PYTHON_MODULE__
 SPECIFIER union CPUVERINFO getCPUVerInfo()
 {
-	struct REG reg;
+	struct REG reg={{.value=0},{.value=0},{.value=0},{.value=0}};
 	reg.eax.value=1;
 	const struct REG oreg=CPUID(&reg);
 	
@@ -89,4 +90,4 @@ SPECIFIER union CPUVERINFO getCPUVerInfo()
 	
 	return cpuinfo;
 }
-
+#endif
