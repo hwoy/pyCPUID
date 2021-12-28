@@ -24,19 +24,19 @@ def main():
     exfamily= cropbit(info,27,20)
     
     print("CPU Version Information");
-    print('Family:',family)
-    print('Model:',model)
-    print('Step:',step)
+    print('Family:',hex(family))
+    print('Model:',hex(model))
+    print('Step:',hex(step))
     
     if family==15:
-        print('ex-Family:',family+exfamily)
+        print('ex-Family:',hex(family+exfamily))
     else:
-        print('ex-Family:',family)
+        print('ex-Family:',hex(family))
         
     if family==6 or family==15:
-        print('ex-Model:',(exmodel<<4)+model)
+        print('ex-Model:',hex((exmodel<<4)+model))
     else:
-        print('ex-Model:',model)
+        print('ex-Model:',hex(model))
     
 
 
