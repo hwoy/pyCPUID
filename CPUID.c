@@ -1,5 +1,9 @@
 #include "CPUID.h"
 
+#ifndef NULL
+#define NULL ((void *)0)
+#endif
+
 #ifndef __x86_64__
 SPECIFIER int testcpuid (void)
 {
@@ -47,6 +51,14 @@ SPECIFIER const char *getCPUManID(CPUMANIDSTR cpustr)
 	return cpustr;
 }
 
+static const char *trimleft(const CPUBRANDSTR cpustr)
+{
+	unsigned int i=0;
+
+	while(cpustr[i]==0x20 && cpustr[i]) ++i;
+
+	return cpustr+i;
+}
 
 SPECIFIER const char *getCPUBrand(CPUBRANDSTR cpustr)
 {
@@ -75,7 +87,7 @@ SPECIFIER const char *getCPUBrand(CPUBRANDSTR cpustr)
 	
 	cpustr[sizeof(uint32_t)*12]=0;
 	
-	return cpustr;
+	return trimleft(cpustr);
 }
 
 #ifndef __XCPUID_PYTHON_MODULE__

@@ -23,11 +23,11 @@ static void printCPUVerInfo()
 {
 	const union CPUVERINFO cpuinfo=getCPUVerInfo();
 	printf("CPU Version Information\n");
-	printf("Family: %u\n",cpuinfo.info.family);
-	printf("Model: %u\n",cpuinfo.info.model);
-	printf("Step: %u\n",cpuinfo.info.step);
-	printf("ex-Family: %u\n",cpuinfo.info.family==15 ? cpuinfo.info.ex_family+cpuinfo.info.family:cpuinfo.info.family);
-	printf("ex-Model: %u\n",cpuinfo.info.family==6 || cpuinfo.info.family==15 ? (cpuinfo.info.ex_model<<4)+cpuinfo.info.model :cpuinfo.info.model);
+	printf("Family: %X\n",cpuinfo.info.family);
+	printf("Model: %X\n",cpuinfo.info.model);
+	printf("Step: %X\n",cpuinfo.info.step);
+	printf("ex-Family: %X\n",cpuinfo.info.family==15 ? cpuinfo.info.ex_family+cpuinfo.info.family:cpuinfo.info.family);
+	printf("ex-Model: %X\n",cpuinfo.info.family==6 || cpuinfo.info.family==15 ? (cpuinfo.info.ex_model<<4)+cpuinfo.info.model :cpuinfo.info.model);
 }
 
 static void printflagsdata(uint32_t reg,const struct flagsdata *data)
@@ -104,3 +104,4 @@ static void printCPUflags()
 }
 
 #endif
+
