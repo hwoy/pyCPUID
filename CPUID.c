@@ -55,7 +55,7 @@ static const char *trimleft(const CPUBRANDSTR cpustr)
 {
 	unsigned int i=0;
 
-	while(cpustr[i]==0x20 && cpustr[i]) ++i;
+	while((cpustr[i]==0x20 || cpustr[i]=='\t') && cpustr[i]) ++i;
 
 	return cpustr+i;
 }
